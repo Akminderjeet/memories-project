@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import router from "../routes/posts";
+
 
 const postSchema = mongoose.Schema({
     title: String,
@@ -16,4 +16,4 @@ const postSchema = mongoose.Schema({
     }
 })
 const PostMessage = mongoose.model('PostMessage', postSchema);
-export default router;
+export default PostMessage;
