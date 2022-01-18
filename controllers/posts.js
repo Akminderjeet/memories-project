@@ -13,12 +13,13 @@ export const getPosts = async (req, resp) => {
 
 }
 export const createPost = async (req, resp) => {
-    const post = req.body;
+    const { title, message, selectedFile, creator, tags } = req.body;
 
-    const newPost = new PostMessage(post);
+    const newPost = new PostMessage({ title, message, selectedFile, creator, tags })
+
     try {
         await newPost.save();
-        resp.status(201).json(newPost);
+        resp.json(newPost);
     }
     catch (err) {
         resp.status(404).json({ message: error.message });
@@ -37,4 +38,16 @@ export const updatePost = async (req, res) => {
     await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
 
     res.json(updatedPost);
+}
+
+export const deletePost = async (req, res) => {
+    const { id } = req.params;
+
+
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+
+
+    await PostMessage.deleteOne({ _id: id });
+    res.send("done");
+
 }
