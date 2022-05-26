@@ -1,5 +1,6 @@
 import express, { Router } from "express";
-import { getPosts, createPost, updatePost, deletePost, getallPosts } from "../controllers/posts.js"
+
+import Contact from "../models/Contact.js";
 const router = express.Router();
 
 // localhost:5000/posts/
@@ -37,8 +38,8 @@ passport.deserializeUser(function (user, done) {
 
 app.use(
     cors({
-        origin: "http://localhost:3000/posts",
-        methods: "GET,POST,PUT,DELETE",
+        origin: "http://localhost:3000/contact",
+        methods: "GET,POST,PUT,DELETE,PATCH",
         credentials: true,
     })
 );
@@ -63,9 +64,34 @@ app.use(passport.session());
 
 
 
-router.get('/all', getallPosts);
-router.get('/', getPosts);
-router.post('/', createPost);
-router.patch('/:id', updatePost);
-router.delete('/:id', deletePost);
+router.post('/', async (req, res) => {
+
+
+    console.log(req.body);
+    const name = req.body.name;
+    const email = req.body.email;
+    const contact = req.body.contact;
+    const message = req.body.message;
+
+
+
+
+    const newPost = new Contact({ name, email, contact, message })
+
+    try {
+        await newPost.save();
+        res.json(newPost);
+    }
+    catch (err) {
+        res.status(404).json({ message: error.message });
+    }
+
+
+});
+router.get('/', async (req, resp) => {
+
+})
+
+
+
 export default router;

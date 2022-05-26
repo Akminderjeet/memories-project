@@ -1,16 +1,19 @@
 import mongoose from "mongoose";
 
 
-const postSchema = mongoose.Schema({
-    tag: String,
-    email: String,
-    fruit: String,
-    title: String,
-    price: Number,
-    selectedFile: String,
+const orderSchema = mongoose.Schema({
+    buyer: String,
+    seller: String,
+    category: String,
+    address: String,
+    stat: Number,
+    total: Number,
+    count: Number,
+    otp: Number
+
 })
-const PostMessage = mongoose.model('PostMessage', postSchema);
-export default PostMessage;
+const OrderMessage = mongoose.model('OrderMessage', orderSchema);
+export default OrderMessage;
 
 
 // email: String,
