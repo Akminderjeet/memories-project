@@ -38,7 +38,7 @@ passport.deserializeUser(function (user, done) {
 
 app.use(
     cors({
-        origin: "https://nimble-tarsier-dfb7fd.netlify.app/orders",
+        origin: "https://nimble-tarsier-dfb7fd.netlify.app/history",
         methods: "GET,POST,PUT,DELETE,PATCH",
         credentials: true,
     })
