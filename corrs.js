@@ -5,7 +5,7 @@ const app = express();
 
 app.use(
     cors({
-        origin: "https://nature-o-kart.herokuapp.com/auth/google",
+        origin: "https://nimble-tarsier-dfb7fd.netlify.app",
         methods: "GET,POST,PUT,DELETE",
         credentials: true,
     })

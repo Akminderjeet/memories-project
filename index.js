@@ -34,7 +34,7 @@ passport.deserializeUser(function (user, done) {
 
 app.use(
     cors({
-        origin: "http://localhost:3000",
+        origin: "https://nimble-tarsier-dfb7fd.netlify.app",
         methods: "GET,POST,PUT,DELETE",
         credentials: true,
     })
@@ -46,7 +46,7 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.connect('mongodb+srv://admin-farmmitra:farmmitra.user@cluster1.tctdt.mongodb.net/farmappsss?retryWrites=true&w=majority', { useNewUrlParser: true });
-const CLIENT_URL = "http://localhost:3000/";
+const CLIENT_URL = "https://nimble-tarsier-dfb7fd.netlify.app/";
 
 
 app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
