@@ -18,7 +18,7 @@ const GoogleStrategy = Passportgoogle.Strategy;
 passport.use(new GoogleStrategy({
     clientID: '803687131159-u30gh2ml07o380m88qtbrcm20ftrc0a5.apps.googleusercontent.com',
     clientSecret: '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',
-    callbackURL: "http://localhost:5000/google/callback",
+    callbackURL: "https://nature-o-kart.herokuapp.com/google/callback",
     passReqToCallback: true
 },
     function (request, accessToken, refreshToken, profile, done) {

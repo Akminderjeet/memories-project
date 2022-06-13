@@ -5,7 +5,7 @@ const app = express();
 
 app.use(
     cors({
-        origin: "http://localhost:5000/auth/google",
+        origin: "https://nature-o-kart.herokuapp.com/auth/google",
         methods: "GET,POST,PUT,DELETE",
         credentials: true,
     })
