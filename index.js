@@ -51,8 +51,9 @@ const CLIENT_URL = "https://nimble-tarsier-dfb7fd.netlify.app/";
 
 app.use(session({
     secret: 'cats', resave: false, saveUninitialized: false, proxy: true, cookie: {
-        path: "/",
-        secure: true
+        sameSite: 'none',
+        secure: true,
+
     }
 }));
 app.use(passport.initialize());
