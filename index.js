@@ -7,9 +7,10 @@ import postRoutes from './routes/posts.js';
 import orderRoutes from './routes/orders.js';
 import Contact from './routes/contact.js'
 import session from 'express-session';
-app.enable('trust proxy');
+
 // const { response } = require('express');
 const app = express();
+app.enable('trust proxy');
 import passport from 'passport';
 import Passportgoogle from 'passport-google-oauth2';
 const GoogleStrategy = Passportgoogle.Strategy;
