@@ -7,7 +7,7 @@ import postRoutes from './routes/posts.js';
 import orderRoutes from './routes/orders.js';
 import Contact from './routes/contact.js'
 import session from 'express-session';
-
+app.enable('trust proxy');
 // const { response } = require('express');
 const app = express();
 import passport from 'passport';
@@ -48,9 +48,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 mongoose.connect('mongodb+srv://admin-farmmitra:farmmitra.user@cluster1.tctdt.mongodb.net/farmappsss?retryWrites=true&w=majority', { useNewUrlParser: true });
 const CLIENT_URL = "https://nimble-tarsier-dfb7fd.netlify.app/";
 
-app.enable('trust proxy');
 app.use(session({
     secret: 'cats', resave: false, saveUninitialized: true, proxy: true, cookie: {
+        sameSite: "lax",
         secure: true,
         maxAge: 5184000000 // 2 months
     }
