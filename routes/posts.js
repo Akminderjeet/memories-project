@@ -55,10 +55,10 @@ function isLoggedIn(req, res, next) {
 }
 app.enable('trust proxy');
 app.use(session({
-    secret: 'cats', resave: false, saveUninitialized: true, proxy: true, cookie: {
-        sameSite: "lax",
+    secret: 'cats', resave: false, saveUninitialized: false, proxy: true, cookie: {
+
         secure: true,
-        maxAge: 5184000000 // 2 months
+
     }
 }));
 

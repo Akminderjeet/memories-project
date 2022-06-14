@@ -54,7 +54,13 @@ function isLoggedIn(req, res, next) {
     req.user ? next() : res.sendStatus(401);
 }
 
-app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
+app.use(session({
+    secret: 'cats', resave: false, saveUninitialized: false, proxy: true, cookie: {
+
+        secure: true,
+
+    }
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 

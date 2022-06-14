@@ -50,10 +50,10 @@ mongoose.connect('mongodb+srv://admin-farmmitra:farmmitra.user@cluster1.tctdt.mo
 const CLIENT_URL = "https://nimble-tarsier-dfb7fd.netlify.app/";
 
 app.use(session({
-    secret: 'cats', resave: false, saveUninitialized: true, proxy: true, cookie: {
-        sameSite: "lax",
+    secret: 'cats', resave: false, saveUninitialized: false, proxy: true, cookie: {
+
         secure: true,
-        maxAge: 5184000000 // 2 months
+
     }
 }));
 app.use(passport.initialize());
