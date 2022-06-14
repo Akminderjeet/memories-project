@@ -49,7 +49,7 @@ mongoose.connect('mongodb+srv://admin-farmmitra:farmmitra.user@cluster1.tctdt.mo
 const CLIENT_URL = "https://nimble-tarsier-dfb7fd.netlify.app/";
 
 
-app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
+app.use(session({ secret: 'cats', resave: false, proxy: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
