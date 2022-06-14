@@ -56,7 +56,7 @@ app.use(session({
         secure: true,
         maxAge: 60000
     },
-    store: new RedisStore(),
+
     secret: 'cats',
     saveUninitialized: true,
     resave: false
