@@ -10,7 +10,7 @@ import session from 'express-session';
 
 // const { response } = require('express');
 const app = express();
-app.enable('trust proxy');
+
 import passport from 'passport';
 import Passportgoogle from 'passport-google-oauth2';
 const GoogleStrategy = Passportgoogle.Strategy;
@@ -49,12 +49,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 mongoose.connect('mongodb+srv://admin-farmmitra:farmmitra.user@cluster1.tctdt.mongodb.net/farmappsss?retryWrites=true&w=majority', { useNewUrlParser: true });
 const CLIENT_URL = "https://nimble-tarsier-dfb7fd.netlify.app/";
 
-app.use(session({
-    secret: 'cats', resave: false, saveUninitialized: false, proxy: true, cookie: {
-        sameSite: 'none',
-        secure: true,
 
-    }
+app.set('trust proxy', 1);
+app.use(session({
+    cookie: {
+        secure: true,
+        maxAge: 60000
+    },
+    store: new RedisStore(),
+    secret: 'cats',
+    saveUninitialized: true,
+    resave: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
