@@ -6,7 +6,7 @@ import cors from 'cors';
 import postRoutes from './routes/posts.js';
 import orderRoutes from './routes/orders.js';
 import Contact from './routes/contact.js'
-import session from 'cookie-session';
+import session from 'express-session';
 
 // const { response } = require('express');
 const app = express();

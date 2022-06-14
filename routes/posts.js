@@ -72,7 +72,7 @@ app.use(passport.session());
 
 
 router.get('/all', getallPosts);
-router.get('/', getPosts);
+router.get('/', getallPosts);
 router.post('/', createPost);
 router.patch('/:id', updatePost);
 router.delete('/:id', deletePost);
