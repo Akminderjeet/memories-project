@@ -45,6 +45,7 @@ app.use(
 
 
 
+
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -52,8 +53,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 function isLoggedIn(req, res, next) {
     req.user ? next() : res.sendStatus(401);
 }
+app.enable('trust proxy');
+app.use(session({
+    secret: 'cats', resave: false, saveUninitialized: true, proxy: true, cookie: {
+        sameSite: "lax",
+        secure: true,
+        maxAge: 5184000000 // 2 months
+    }
+}));
 
-app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
