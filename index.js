@@ -50,7 +50,7 @@ mongoose.connect('mongodb+srv://admin-farmmitra:farmmitra.user@cluster1.tctdt.mo
 const CLIENT_URL = "https://nimble-tarsier-dfb7fd.netlify.app/";
 
 
-app.set('trust proxy', 1);
+app.enable('trust proxy');
 app.use(session({
 
 
