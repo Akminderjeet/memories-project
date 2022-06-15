@@ -53,6 +53,7 @@ const CLIENT_URL = "https://nimble-tarsier-dfb7fd.netlify.app/";
 app.set('trust proxy', 1);
 app.use(session({
     cookie: {
+        sameSite: 'none',
         secure: true,
         maxAge: 60000
     },
