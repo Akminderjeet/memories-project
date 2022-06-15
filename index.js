@@ -19,7 +19,7 @@ const GoogleStrategy = Passportgoogle.Strategy;
 passport.use(new GoogleStrategy({
     clientID: '803687131159-u30gh2ml07o380m88qtbrcm20ftrc0a5.apps.googleusercontent.com',
     clientSecret: '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',
-    callbackURL: "https://nature-o-kart.herokuapp.com/google/callback",
+    callbackURL: "http://localhost:5000/google/callback",
     passReqToCallback: true
 },
     function (request, accessToken, refreshToken, profile, done) {
@@ -35,7 +35,7 @@ passport.deserializeUser(function (user, done) {
 
 app.use(
     cors({
-        origin: "https://nimble-tarsier-dfb7fd.netlify.app",
+        origin: "http://localhost:5000",
         methods: "GET,POST,PUT,DELETE",
         credentials: true,
     })
@@ -50,17 +50,13 @@ mongoose.connect('mongodb+srv://admin-farmmitra:farmmitra.user@cluster1.tctdt.mo
 const CLIENT_URL = "https://nimble-tarsier-dfb7fd.netlify.app/";
 
 
-app.set('trust proxy', 1);
 app.use(session({
-    cookie: {
-        sameSite: 'none',
-        secure: true,
-        maxAge: 60000
-    },
+
 
     secret: 'cats',
     saveUninitialized: true,
-    resave: false
+    resave: false,
+
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -89,7 +85,7 @@ app.get('/auth/google',
 
 app.get('/google/callback',
     passport.authenticate('google', {
-        successRedirect: CLIENT_URL,
+        successRedirect: '/',
         failureRedirect: '/auth/google/failure'
     })
 );
@@ -119,7 +115,7 @@ app.get('/auth/google/failure', (req, res) => {
 
 
 
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 app.listen(PORT, () => {
     console.log("started");
 })
