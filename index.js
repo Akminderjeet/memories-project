@@ -56,7 +56,11 @@ app.use(session({
 
     secret: 'cats',
     saveUninitialized: true,
-    resave: false
+    resave: false,
+    cookie: {
+        domain: '.herokuapp.com'
+    }
+
 }));
 app.use(passport.initialize());
 app.use(passport.session());
