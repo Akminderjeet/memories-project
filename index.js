@@ -7,6 +7,7 @@ import postRoutes from './routes/posts.js';
 import orderRoutes from './routes/orders.js';
 import Contact from './routes/contact.js'
 import session from 'express-session';
+const filestore = require("session-file-store")(session)
 
 // const { response } = require('express');
 const app = express();
@@ -57,9 +58,7 @@ app.use(session({
     secret: 'cats',
     saveUninitialized: true,
     resave: false,
-    cookie: {
-        domain: '.herokuapp.com'
-    }
+    store: new filestore()
 
 }));
 app.use(passport.initialize());
