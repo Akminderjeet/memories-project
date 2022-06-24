@@ -38,7 +38,7 @@ app.use(
     cors({
         origin: "https://nimble-tarsier-dfb7fd.netlify.app",
         methods: "GET,POST,PUT,DELETE",
-        credentials: true,
+        credentials: true
     })
 );
 
@@ -60,6 +60,7 @@ app.use(session({
     resave: false,
     proxy: true,
     cookie: {
+        sameSite: 'none',
         secure: true
     }
 

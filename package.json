@@ -6,7 +6,8 @@
   "proxy": "https://nimble-tarsier-dfb7fd.netlify.app/",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "build": "put build command here"
   },
   "keywords": [],
   "author": "",

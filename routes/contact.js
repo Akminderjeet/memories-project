@@ -40,7 +40,7 @@ app.use(
     cors({
         origin: "https://nimble-tarsier-dfb7fd.netlify.app/contact",
         methods: "GET,POST,PUT,DELETE,PATCH",
-        credentials: true,
+        credentials: true
     })
 );
 
