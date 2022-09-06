@@ -19,8 +19,8 @@ const GoogleStrategy = Passportgoogle.Strategy;
 //ClientID:  803687131159-u30gh2ml07o380m88qtbrcm20ftrc0a5.apps.googleusercontent.com
 //ClientSecret: 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
 passport.use(new GoogleStrategy({
-    clientID: '803687131159-u30gh2ml07o380m88qtbrcm20ftrc0a5.apps.googleusercontent.com',
-    clientSecret: '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',
+    clientID: process.env.GOOGLEID,
+    clientSecret: process.env.CLIENTSECRET,
     callbackURL: "https://nature-o-kart.herokuapp.com/google/callback",
     passReqToCallback: true
 },

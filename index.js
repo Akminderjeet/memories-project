@@ -16,8 +16,7 @@ const app = express();
 import passport from 'passport';
 import Passportgoogle from 'passport-google-oauth2';
 const GoogleStrategy = Passportgoogle.Strategy;
-//ClientID:  803687131159-u30gh2ml07o380m88qtbrcm20ftrc0a5.apps.googleusercontent.com
-//ClientSecret: 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
+
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLEID,
     clientSecret: process.env.CLIENTSECRET,
@@ -48,7 +47,7 @@ app.use(
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect('mongodb+srv://admin-farmmitra:farmmitra.user@cluster1.tctdt.mongodb.net/farmappsss?retryWrites=true&w=majority', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGOURL, { useNewUrlParser: true });
 const CLIENT_URL = "https://nimble-tarsier-dfb7fd.netlify.app/";
 
 
